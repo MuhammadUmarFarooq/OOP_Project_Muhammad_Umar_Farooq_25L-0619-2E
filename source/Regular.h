@@ -2,7 +2,7 @@
 #define REGULAR_H
 #include "Student.h"
 
-class Regular
+class Regular:public Student
 {
 private:
     

@@ -7,6 +7,19 @@ private:
     bool Semester;// pass or fail
 public:
     Exchange(bool Semester);
+    void displayProfile() override {
+        cout << "Exchange Student Profile:" << endl;
+        cout << "ID: " << getID() << endl;
+        cout << "Name: " << getName() << endl;
+        cout << "Email: " << getEmail() << endl;
+        cout << "Semester: " << (Semester ? "Pass" : "Fail") << endl;
+    }
+    void calculateGPA() override {
+        // Implement GPA calculation logic here
+        // For demonstration, we'll set a dummy GPA value
+        float GPA = 3.2; // This should be calculated based on assessments
+        cout << "Calculated GPA: " << GPA << endl;
+    }
     ~Exchange();    
 };
 

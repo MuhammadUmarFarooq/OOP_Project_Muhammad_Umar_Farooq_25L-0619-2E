@@ -3,5 +3,5 @@
 #include <string>   
 #include "Student.h"
 
-Regular::Regular() {
+Regular::Regular(string ID, string name, string email):Student(ID, name, email, "Regular") {
 }

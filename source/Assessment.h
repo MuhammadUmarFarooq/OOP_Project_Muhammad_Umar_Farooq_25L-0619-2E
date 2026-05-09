@@ -9,7 +9,7 @@ float MaxScore;
 
 public:
 
-Assessment(int Weightage,float rawScore,float MaxScore) {
+Assessment(int Weightage=0, float rawScore=0, float MaxScore=0) {
 
 }
         

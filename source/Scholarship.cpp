@@ -2,9 +2,11 @@
 #include <iostream>
 #include <string>
 #include "Student.h"
+#include "AcademicEntity.h"
+
 
 Scholarship::Scholarship(bool selectedForScholarship) {
-    this->selectedForScholarship = selectedForScholarship;
+    this->ScholarshipMantained = selectedForScholarship;
 
 };
 

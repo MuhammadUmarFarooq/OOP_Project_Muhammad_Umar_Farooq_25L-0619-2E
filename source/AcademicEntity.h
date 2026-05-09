@@ -13,14 +13,15 @@ string name;
 string email;
 
 public:
-AcademicEntity(string ID, string name, string email) {
-    this->ID = ID;
-    this->name = name;
-    this->email = email;
+AcademicEntity(string ID="", string name="", string email="") {
+    
 }
 virtual void displayProfile() = 0;
 
-
+string getID() const { return ID; }
+string getName() const { return name; }
+string getEmail() const { return email; }
+   
 };
 
 #endif // ACADEMICENTITY_H

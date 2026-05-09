@@ -1,20 +1,21 @@
 #ifndef STUDENT_H
 #define STUDENT_H
-
-class Student
+#include "AcademicEntity.h"
+class Student:public AcademicEntity
 {
 private:
-    float GPA;
+    string Type; // Regular, Exchange, Scholarship
 public:
-    Student(float GPA) {
-      
-    }
+    Student(string ID="", string name="", string email="", string Type=""):AcademicEntity(ID, name, email ) {
+        this->Type = Type;
+    } 
 
+    virtual void displayProfile() = 0;
     virtual void calculateGPA() = 0;
 
     virtual void ViewTranscript() = 0;
 
-    
+
 };
 
 

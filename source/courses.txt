@@ -1,0 +1,3 @@
+CS101|Object Oriented Programming|T-101|Core|40
+CS102|Data Structures|T-102|Core|35
+EE201|Digital Logic Design|T-103|Lab|25

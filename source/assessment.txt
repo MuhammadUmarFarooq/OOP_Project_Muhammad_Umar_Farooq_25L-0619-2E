@@ -1,0 +1,3 @@
+S1|Exam|85|100
+S1|Assignment|18|20
+S2|Quiz|9|10

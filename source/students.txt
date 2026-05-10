@@ -1,0 +1,4 @@
+
+25L-0001|Ali Ahmed|Regular|3.8|N/A
+25L-0002|Sara Khan|Scholarship|3.9|3.0
+25L-0003|John Doe|Exchange|Pass|1

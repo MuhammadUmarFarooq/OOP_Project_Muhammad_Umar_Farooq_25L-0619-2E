@@ -7,20 +7,14 @@ class Regular:public Student
 private:
     float GPA;
 public:
-    Regular(string ID, string name, string email):Student(ID, name, email, "Regular") {
-    }
-    void displayProfile() override {
-        cout << "Regular Student Profile:" << endl;
-        cout << "ID: " << getID() << endl;
-        cout << "Name: " << getName() << endl;
-        cout << "Email: " << getEmail() << endl;
-    }
-    void calculateGPA() {
-        // Implement GPA calculation logic here
-        // For demonstration, we'll set a dummy GPA value
-        GPA = 3.5; // This should be calculated based on assessments
-    }
-    ~Regular();
+    Regular(const string& id, const string& n, const string& e)
+        : Student(id, n, e, "Regular") {}
+
+    double calculateGPA()    const override;
+    void   viewTranscript()  const override;
+    void   addCourseGrade(const string& cid, double pct) override;
+    void   displayProfile()  override;
+    string serialize()       const override;
 };
 
 

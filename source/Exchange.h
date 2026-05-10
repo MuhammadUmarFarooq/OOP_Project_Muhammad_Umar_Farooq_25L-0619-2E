@@ -4,30 +4,26 @@
 class Exchange :public Student
 {
 private:
-    bool Semester;// pass or fail
+    vector<string> passFailCourseIDs; // list of courseIDs this exchange student is enrolled in with Pass/Fail grading
+    vector<string> passFailStatus;    // "Pass" or "Fail" corresponding to the above courses
 public:
-    Exchange(string ID="", string name="", string email="", bool Semester=false):Student(ID, name, email, "Exchange") {
-        this->Semester = Semester;
-    }
-    void displayProfile() override {
-        cout << "Exchange Student Profile:" << endl;
-        cout << "ID: " << getID() << endl;
-        cout << "Name: " << getName() << endl;
-        cout << "Email: " << getEmail() << endl;
-        cout << "Semester: " << (Semester ? "Pass" : "Fail") << endl;
-    }
-    void calculateGPA() override {
-        // Implement GPA calculation logic here
-        // For demonstration, we'll set a dummy GPA value
-        float GPA = 3.2; // This should be calculated based on assessments
-        cout << "Calculated GPA: " << GPA << endl;
-    }
-    ~Exchange();    
+    Exchange(const std::string& id, const std::string& n, const std::string& e)
+        : Student(id, n, e, "Exchange") {}
+
+    // Accessors for parallel vectors
+    const std::vector<std::string>& getPassFailCourseIDs() const { return passFailCourseIDs; }
+    const std::vector<std::string>& getPassFailStatus() const { return passFailStatus; }
+
+    
+    double calculateGPA()    const override { return -1.0; } 
+    
+    void   viewTranscript() const override;
+    void   addCourseGrade(const std::string& cid, double pct) override;
+    void   displayProfile()  override;
+    std::string serialize()        const override;
+
+
 };
-
-
-
-
 
 
 #endif // EXCHANGE_H

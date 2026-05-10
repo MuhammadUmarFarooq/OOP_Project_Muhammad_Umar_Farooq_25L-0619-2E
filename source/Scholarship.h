@@ -5,32 +5,23 @@
 
 class Scholarship :public Student{
 private:    
-float GPA; // Assuming GPA is relevant for scholarship students
-    bool ScholarshipMantained;           
+    double minGPA;   // threshold the student must maintain
+    string status;   // "Good Standing" or "Probation"
+           
 public:
 
-Scholarship(string ID, string name, string email, bool selectedForScholarship):Student(ID, name, email, "Scholarship") {
-    this->ScholarshipMantained = selectedForScholarship;                                                                          
-}
+  Scholarship(const string& id, const string& n,
+                       const string& e, double minG = 3.0)
+        : Student(id, n, e, "Scholarship"), minGPA(minG), status("Good Standing") {}
 
-void displayProfile() override {
-    cout << "Scholarship Student Profile:" << endl;
-    cout << "ID: " << getID() << endl;
-    cout << "Name: " << getName() << endl;
-    cout << "Email: " << getEmail() << endl;
-    cout << "Selected for Scholarship: " << (ScholarshipMantained ? "Yes" : "No") << endl;
-}
-void calculateGPA() override {
-    // Implement GPA calculation logic here
-    // For demonstration, we'll set a dummy GPA value
-    this->GPA = 3.8; // This should be calculated based on assessments
-    cout << "Calculated GPA: " << GPA << endl;
-    if (GPA<3.0)
-    {
-        ScholarshipMantained = false;
-        cout << "Scholarship status: Not Maintained" << endl;
-    }
-    
-}
+    double getMinGPA() const { return minGPA; }
+    string getStatus() const { return status; }
+    void   checkStatus();   // call after any grade update
+
+    double calculateGPA()    const override;
+    void   viewTranscript()  const override;
+    void   addCourseGrade(const string& cid, double pct) override;
+    void   displayProfile()  override;
+    string serialize()       const override;
 };
 #endif // Scholarship_H

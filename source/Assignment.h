@@ -5,8 +5,12 @@
 class Assignment : public Assessment {
 private:
 public:
-    Assignment(int Weightage=0, float rawScore=0, float MaxScore=0);
-    ~Assignment() {
+    Assignment(double raw = 0, double max = 100, double wt = 30)
+        : Assessment("Assignment", raw, max, wt) {}
+
+    double getWeightedScore() const override {
+        if (MaxScore == 0) return 0.0;// to guard against division by zero
+        return (rawScore / MaxScore) * Weightage;
     }
 };
 

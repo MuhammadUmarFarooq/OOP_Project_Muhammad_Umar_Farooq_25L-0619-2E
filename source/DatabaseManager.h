@@ -28,11 +28,13 @@ class Exchange;
 
 class DatabaseManager {
 public:
+
+    static void loadWeightages(const std::string& filePath = "weightages.txt");
     // Loads all students from Students.txt into a vector of pointers
-    static std::vector<Student*> loadStudents(const std::string& filePath);
+    static std::vector<Student*> loadStudents(const std::string& filePath="students.txt");
     
     // Saves the current state of students back to the file
-    static void saveStudents(const std::string& filePath, const std::vector<Student*>& students);
+    static void saveStudents(const std::string& filePath="students.txt", const std::vector<Student*>& students);
 };
 
 

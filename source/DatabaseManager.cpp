@@ -2,6 +2,9 @@
 #include "Regular.h"
 #include "Scholarship.h"
 #include "Exchange.h"
+#include "WeightageConfig.h"
+
+
 #include <vector>
 #include <string>
 #include <fstream>
@@ -10,6 +13,7 @@
 using namespace std;
 
 std::vector<Student*> DatabaseManager::loadStudents(const std::string& filePath) {
+
     std::vector<Student*> students;
     std::ifstream file(filePath);
     std::string line;
@@ -36,4 +40,28 @@ std::vector<Student*> DatabaseManager::loadStudents(const std::string& filePath)
         }
     }
     return students;
+}
+
+
+void DatabaseManager::loadWeightages(const std::string& filePath) {
+    std::ifstream file(filePath);
+    if (!file.is_open()) return;
+
+    std::string line;
+    while (std::getline(file, line)) {
+        if (line.empty() || line[0] == '#') continue;
+
+        // Manual parsing without stringstream [cite: 1591, 1592]
+        int p1 = (int)line.find('|');
+        int p2 = (int)line.find('|', p1 + 1);
+        int p3 = (int)line.find('|', p2 + 1);
+
+        if (p1 != -1 && p2 != -1 && p3 != -1) {
+            // Populate the static vectors in WeightageConfig directly
+            WeightageConfig::types.push_back(line.substr(0, p1));
+            WeightageConfig::examPcts.push_back(std::stod(line.substr(p1 + 1, p2 - p1 - 1)));
+            WeightageConfig::assignPcts.push_back(std::stod(line.substr(p2 + 1, p3 - p2 - 1)));
+            WeightageConfig::quizPcts.push_back(std::stod(line.substr(p3 + 1)));
+        }
+    }
 }

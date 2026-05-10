@@ -13,8 +13,7 @@ public:
     virtual void displayProfile() = 0;
     virtual void calculateGPA() = 0;
 
-    virtual void ViewTranscript() = 0;
-
+    
 
 };
 

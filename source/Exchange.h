@@ -6,7 +6,9 @@ class Exchange :public Student
 private:
     bool Semester;// pass or fail
 public:
-    Exchange(bool Semester);
+    Exchange(string ID="", string name="", string email="", bool Semester=false):Student(ID, name, email, "Exchange") {
+        this->Semester = Semester;
+    }
     void displayProfile() override {
         cout << "Exchange Student Profile:" << endl;
         cout << "ID: " << getID() << endl;

@@ -16,7 +16,7 @@ string file_path; // To store the file path for persistence
 
 public:
 virtual ~AcademicEntity() = default;
-AcademicEntity(string ID="", string name="", string email="") {
+AcademicEntity(string ID="", string name="", string email=""): ID(ID), name(name), email(email) {
     
 }
 virtual void displayProfile() = 0;
